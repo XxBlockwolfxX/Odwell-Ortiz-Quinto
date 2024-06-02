@@ -5,15 +5,7 @@ SHOW TABLES;
 show COLUMNS
 from
     alumno
-
-    --Llenar las tablas alumno_parte1 y alumno_parte2 con datos
-    INSERT INTO `alumno_parte1` 
-SELECT * FROM `alumno` WHERE `codigo` <= 1000;
-
-INSERT INTO `alumno_parte2`
-SELECT * FROM `alumno` WHERE `codigo` > 1000;
-
-    --Fragmentacion Vertical
+        --Fragmentacion Vertical
 SELECT
     alumno_1.codigo as "Codigo de Alumno 1",
     alumno_1.*,
@@ -22,6 +14,14 @@ SELECT
 FROM
     `alumno_1`
     INNER JOIN alumno_2 on alumno_1.codigo = alumno_2.codigo;
+
+--Llenar las tablas alumno_parte1 y alumno_parte2 con datos
+    INSERT INTO `alumno_parte1` 
+SELECT * FROM `alumno` WHERE `codigo` <= 1000;
+
+INSERT INTO `alumno_parte2`
+SELECT * FROM `alumno` WHERE `codigo` > 1000;
+
 
     --Fragmentacion Horizontal
 SELECT * FROM alumno_parte1
